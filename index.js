@@ -5,6 +5,7 @@ var _ = require('lodash');
 var api = express();
 var contacts =[];
 var count = 0;
+var PORT_NUMBER = 3000;
 
 api.get('/', function(req, res, next){
   res.send('Hello World');
@@ -26,7 +27,7 @@ function(req, res, next){
   if (typeof contact !== 'object'){
     return res.status(422).send('Unprocessable entity');
   }
-  contact.push(contact);
+  contacts.push(contact);
   res.send(contact);
 });
 
@@ -61,8 +62,8 @@ api.delete('/contacts/:name', function(req, res, next){
 });
 
 
-
-console.log("API LISTENING");
-api.listen(3000);
+var port = process.env.port || PORT_NUMBER;
+console.log("API LISTENING ON " + port);
+api.listen(port);
 
 module.exports = api;
