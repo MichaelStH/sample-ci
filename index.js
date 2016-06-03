@@ -1,6 +1,7 @@
-var express = require('express');
+var express = require('express')
 var bodyparser = require('body-parser')
-var _ = require('lodash');
+var _ = require('lodash')
+var mongoose = require('mongoose')
 
 var api = express();
 var contacts =[];
